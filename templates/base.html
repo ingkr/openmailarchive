@@ -21,6 +21,12 @@
                     bottom: 5px;
                     position: absolute;
                 }
+                #button_debug{
+                    bottom: 3.5em;
+                    right:0.5em;
+                    position: absolute;
+                    font-size: 0.5em;
+                }
         </style>
     </head>
     <body>
@@ -28,17 +34,26 @@
         <div id="content">
             {% block content %}{% endblock content %}
         </div>
-        <div id="debug">
-            <a href="../">/</a>
-            <a href="../admin">/admin</a>
-            <a href="../login">/login</a>
-            <a href="../logout">/logout</a>
-
-
+        <button id="button_debug">debug</button>
+        <div id="debug_dialog" title="debug">
+             <p>
+                <a href="../">/</a>
+                <a href="../admin">/admin</a>
+                <a href="../login">/login</a>
+                <a href="../logout">/logout</a>
+            </p>
         </div>
         <div id="footer"> </div>
         <script>
-            $( "#debug" ).accordion();
+            $( "#debug_dialog" ).dialog({
+                autoOpen: false,
+                width: 400
+            });
+            $( "#button_debug" ).button();
+            $( "#button_debug" ).click(function( event ) {
+                $( "#debug_dialog" ).dialog( "open" );
+                event.preventDefault();
+            });
         </script>
     </body>
 </html>

@@ -29,5 +29,7 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^login/$', 'django.contrib.auth.views.login'),
     url(r'^logout/$', 'django.contrib.auth.views.logout'),
-]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+]
+
+
 
